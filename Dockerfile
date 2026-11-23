@@ -17,7 +17,8 @@ RUN rm -r /app/data /app/uploads /app/research_reports /app/temp /app/lib /app/.
  && mkdir -p /data && chown landppt:landppt /data
 
 COPY --chmod=0755 start.sh /usr/local/bin/railway-start.sh
-COPY --chmod=0644 seed.py /usr/local/lib/landppt-railway/seed.py
+COPY seed.py /usr/local/lib/landppt-railway/seed.py
+RUN chmod 755 /usr/local/lib/landppt-railway && chmod 644 /usr/local/lib/landppt-railway/seed.py
 
 # Single-node defaults (no MinIO, Valkey or worker service needed).
 ENV WORKERS=1 \
